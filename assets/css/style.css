@@ -30,7 +30,8 @@
 .wheel-container {
   position: relative;
   text-align: center;
-  top: 20px;
+  /* top: 20px; */
+  margin-top: 10%;
 }
 
 .wheel {
@@ -43,8 +44,8 @@
 .picker {
   text-align: center;
   margin: 0 auto;
-  top: 45px;
-  position: relative;
+
+  position: absolute;
   z-index: 3;
   width: 0;
   height: 0;
@@ -53,7 +54,31 @@
   border-top: 100px solid black;
   border-radius: 50%;
 }
+.picker:nth-child(1) {
+  top: -6%;
+  left: 45.5%;
+  right: 46%;
+}
+.picker:nth-child(2) {
+  top: 46%;
+  bottom: 46%;
+  left: 12.5%;
+  transform: rotate(-90deg);
+}
 
+.picker:nth-child(3) {
+  bottom: -6%;
+  left: 45.5%;
+  right: 46%;
+  transform: rotate(-180deg);
+}
+
+.picker:nth-child(4) {
+  top: 46%;
+  bottom: 46%;
+  right: 12.5%;
+  transform: rotate(90deg);
+}
 .picker-move {
   transform: rotate(-20deg);
 }
