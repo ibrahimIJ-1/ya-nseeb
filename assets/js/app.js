@@ -1,6 +1,10 @@
 const $wheel = $(".wheel");
 const $spinButton = $(".spin-btn");
+const $nextbtn = $(".next-btn");
+const $prevbtn = $(".prev-btn");
 const $picker = $(".picker");
+let slices = $("tspan");
+let count = 1;
 
 randomNum = 0;
 
@@ -8,12 +12,12 @@ function spinWheel() {
   //spins wheel randomly
   randomNum += Math.random() * 360 + 2880;
   $wheel.css({ transform: "rotate(" + randomNum + "deg)" });
-  TweenMax.fromTo(
-    $picker,
-    0.1,
-    { rotation: 0 },
-    { yoyo: true, rotation: -20, repeat: 90 }
-  );
+  // TweenMax.fromTo(
+  //   $picker,
+  //   0.1,
+  //   { rotation: 0 },
+  //   { yoyo: true, rotation: -20, repeat: 90 }
+  // );
 }
 
 function randomAnswer() {
@@ -31,12 +35,33 @@ function removeAnswer() {
 // Spins wheel on spin wheel button click
 $spinButton.on("click", function () {
   spinWheel();
-  console.log(randomNum);
+  console.log(slices);
   // alert when wheel stops spinning
   if ($(".wheel").css("transform")) {
     console.log("spinning");
   }
   // $wheel.removeAttr('style');
+});
+
+$nextbtn.on("click", function () {
+  if (count + 1 < 6) {
+    count++;
+    num = 1;
+    slices.each((index, element) => {
+      $(element).text(`${count * 100 + num}`);
+      num++;
+    });
+  }
+});
+$prevbtn.on("click", function () {
+  if (count - 1 >= 0) {
+    count--;
+    num = 1;
+    slices.each((index, element) => {
+      $(element).text(`${count * 100 + num}`);
+      num++;
+    });
+  }
 });
 
 //click new puzzle to show a new puzzle
